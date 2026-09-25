@@ -507,7 +507,18 @@ body.options-active #optionsView { display: block; }
 .options-back { width: 32px; height: 32px; padding: 0; border: 1px solid #3d4150; border-radius: 5px; background: transparent; color: #e7e9ee; cursor: pointer; font-size: 22px; line-height: 1; }
 .options-back:hover { background: #3a3e4b; }
 .option-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px; margin-bottom: 12px; background: #23262f; border: 1px solid #3a3e4b; border-radius: 8px; }
-.logo-name-row { display: flex; align-items: center; gap: 6px; }
+.logo-name-row { display: flex; align-items: center; gap: 8px; }
+.logo-thumb {
+  width: auto;
+  max-width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid #3d4150;
+  background: #1b1d23;
+  display: block;
+}
+.logo-thumb[hidden] { display: none; }
 .option-actions { display: flex; gap: 6px; }
 .option-button { border: 1px solid #3d4150; border-radius: 5px; padding: 6px 9px; background: #2f323d; color: #e7e9ee; cursor: pointer; font-size: 12px; }
 .option-button:hover { background: #3a3e4b; }
@@ -603,6 +614,7 @@ body.light-mode .option-button:hover,
 body.light-mode .theme-toggle:hover { background: #e7ebf1; }
 body.light-mode .options-back { border-color: #cbd1dc; color: #20242c; }
 body.light-mode .options-back:hover { background: #e7ebf1; }
+body.light-mode .logo-thumb { background: #eef1f5; border-color: #cbd1dc; }
 body.light-mode .logo-clear { color: #687384; }
 body.light-mode .logo-clear:hover { color: #c74444; }
 body.light-mode .label-color-add input[type=text] { background: #ffffff; border-color: #cbd1dc; color: #20242c; }

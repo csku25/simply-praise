@@ -2,6 +2,7 @@ const themeToggle = document.getElementById('themeToggle');
 const themeIcon = document.getElementById('themeIcon');
 const themeLabel = document.getElementById('themeLabel');
 const logoLabel = document.getElementById('logoLabel');
+const logoPreview = document.getElementById('logoPreview');
 const logoChoose = document.getElementById('logoChoose');
 const logoClear = document.getElementById('logoClear');
 
@@ -30,6 +31,11 @@ window.api.onThemeChanged(applyThemeMode);
 
 function updateLogo(logoPath) {
   logoLabel.textContent = logoPath ? logoPath.split(/[\\/]/).pop() : 'No logo selected';
+  if (logoPreview) {
+    logoPreview.src = logoPath || '';
+    logoPreview.hidden = !logoPath;
+    logoPreview.alt = logoPath ? 'Selected logo preview' : '';
+  }
   logoClear.hidden = !logoPath;
 }
 

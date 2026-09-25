@@ -1369,9 +1369,15 @@ function updateControlOptionsTheme(isLight) {
 
 function updateControlOptionsLogo(logoPath) {
   const label = document.getElementById('controlLogoLabel');
+  const preview = document.getElementById('controlLogoPreview');
   const clear = document.getElementById('controlLogoClear');
   if (!label || !clear) return;
   label.textContent = logoPath ? logoPath.split(/[\\/]/).pop() : 'No logo selected';
+  if (preview) {
+    preview.src = logoPath || '';
+    preview.hidden = !logoPath;
+    preview.alt = logoPath ? 'Selected logo preview' : '';
+  }
   clear.hidden = !logoPath;
 }
 

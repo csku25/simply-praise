@@ -25,7 +25,18 @@ h1 { margin: 0 0 20px; font-size: 20px; }
   border: 1px solid #3a3e4b;
   border-radius: 8px;
 }
-.logo-name-row { display: flex; align-items: center; gap: 6px; }
+.logo-name-row { display: flex; align-items: center; gap: 8px; }
+.logo-thumb {
+  width: auto;
+  max-width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid #3d4150;
+  background: #1b1d23;
+  display: block;
+}
+.logo-thumb[hidden] { display: none; }
 .option-actions { display: flex; gap: 6px; }
 .option-button { border: 1px solid #3d4150; border-radius: 5px; padding: 6px 9px; background: #2f323d; color: #e7e9ee; cursor: pointer; font-size: 12px; }
 .option-button:hover { background: #3a3e4b; }
@@ -64,5 +75,6 @@ body.light-mode .theme-toggle:hover { background: #e7ebf1; }
 body.light-mode .option-button { background: #f5f6f8; border-color: #cbd1dc; color: #20242c; }
 body.light-mode .option-button:hover { background: #e7ebf1; }
 body.light-mode .option-button.subtle { background: transparent; }
+body.light-mode .logo-thumb { background: #eef1f5; border-color: #cbd1dc; }
 body.light-mode .logo-clear { color: #687384; }
 body.light-mode .logo-clear:hover { color: #c74444; }
