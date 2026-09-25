@@ -1,0 +1,56 @@
+[
+  {
+    "id": "song-amazing-grace",
+    "title": "Amazing Grace",
+    "author": "John Newton, 1779 (public domain)",
+    "themeId": "default",
+    "slides": [
+      {
+        "id": "s1",
+        "label": "Verse 1",
+        "text": "Amazing grace! How sweet the sound,\nThat saved a wretch like me!\nI once was lost, but now am found;\nWas blind, but now I see."
+      },
+      {
+        "id": "s2",
+        "label": "Verse 2",
+        "text": "'Twas grace that taught my heart to fear,\nAnd grace my fears relieved;\nHow precious did that grace appear\nThe hour I first believed."
+      },
+      {
+        "id": "s3",
+        "label": "Verse 3",
+        "text": "Through many dangers, toils, and snares,\nI have already come;\n'Tis grace hath brought me safe thus far,\nAnd grace will lead me home."
+      }
+    ]
+  },
+  {
+    "id": "song-holy-holy-holy",
+    "title": "Holy, Holy, Holy",
+    "author": "Reginald Heber, 1826 (public domain)",
+    "themeId": "default",
+    "slides": [
+      {
+        "id": "s1",
+        "label": "Verse 1",
+        "text": "Holy, holy, holy! Lord God Almighty!\nEarly in the morning our song shall rise to Thee;\nHoly, holy, holy! Merciful and mighty!\nGod in three Persons, blessed Trinity!"
+      },
+      {
+        "id": "s2",
+        "label": "Verse 2",
+        "text": "Holy, holy, holy! All the saints adore Thee,\nCasting down their golden crowns around the glassy sea;\nCherubim and seraphim falling down before Thee,\nWhich wert, and art, and evermore shalt be."
+      }
+    ]
+  },
+  {
+    "id": "song-joy-to-the-world",
+    "title": "Joy to the World",
+    "author": "Isaac Watts, 1719 (public domain)",
+    "themeId": "default",
+    "slides": [
+      {
+        "id": "s1",
+        "label": "Verse 1",
+        "text": "Joy to the world! The Lord is come;\nLet earth receive her King;\nLet every heart prepare Him room,\nAnd heaven and nature sing,\nAnd heaven and nature sing,\nAnd heaven, and heaven, and nature sing."
+      }
+    ]
+  }
+]

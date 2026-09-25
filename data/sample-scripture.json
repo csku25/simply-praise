@@ -1,0 +1,34 @@
+{
+  "translation": "King James Version (public domain)",
+  "note": "This is a small sample so the app has something to show out of the box. See README.md for how to import a full public-domain translation (KJV, ASV, WEB, etc).",
+  "books": [
+    {
+      "book": "Psalm",
+      "chapters": [
+        {
+          "chapter": 23,
+          "verses": [
+            { "verse": 1, "text": "The LORD is my shepherd; I shall not want." },
+            { "verse": 2, "text": "He maketh me to lie down in green pastures: he leadeth me beside the still waters." },
+            { "verse": 3, "text": "He restoreth my soul: he leadeth me in the paths of righteousness for his name's sake." },
+            { "verse": 4, "text": "Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me." },
+            { "verse": 5, "text": "Thou preparest a table before me in the presence of mine enemies: thou anointest my head with oil; my cup runneth over." },
+            { "verse": 6, "text": "Surely goodness and mercy shall follow me all the days of my life: and I will dwell in the house of the LORD for ever." }
+          ]
+        }
+      ]
+    },
+    {
+      "book": "John",
+      "chapters": [
+        {
+          "chapter": 3,
+          "verses": [
+            { "verse": 16, "text": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life." },
+            { "verse": 17, "text": "For God sent not his Son into the world to condemn the world; but that the world through him might be saved." }
+          ]
+        }
+      ]
+    }
+  ]
+}

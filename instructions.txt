@@ -1,0 +1,6 @@
+In project root:
+npm install
+npm run dist
+
+To run without building:
+npm start

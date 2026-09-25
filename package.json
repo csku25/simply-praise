@@ -1,0 +1,54 @@
+{
+  "name": "simplypraise",
+  "productName": "SimplyPraise",
+  "version": "0.1.0",
+  "description": "Open source worship presentation software for Windows (song lyrics, scripture, and media on a second screen/projector). No licensing gate, no store, no browser.",
+  "main": "main.js",
+  "author": "",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^44.4.1",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "org.simplypraise.app",
+    "productName": "SimplyPraise",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "data/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "icon": "assets/simplyworship_logo.png",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

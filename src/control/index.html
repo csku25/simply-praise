@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>SimplyPraise</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="toolbar">
+    <div class="tb-spacer"></div>
+    <div class="monitor-select-group">
+      <select id="displaySelect" title="Output display"></select>
+    </div>
+    <div class="tb-group live-controls">
+      <button id="btnLogoScreen" class="tb-btn">Logo</button>
+      <button id="btnBlackScreen" class="tb-btn">Black</button>
+      <button id="btnClearScreen" class="tb-btn">Clear</button>
+      <button id="btnGoLive" class="tb-btn live-toggle">Live</button>
+    </div>
+  </div>
+
+  <div id="main">
+
+    <div id="workArea">
+      <!-- TOP LEFT: schedule -->
+      <div id="scheduleCol">
+        <div class="col-header">Schedule</div>
+        <div class="list" id="scheduleList"></div>
+      </div>
+
+      <div class="panel-splitter vertical" id="scheduleSplitter" role="separator"
+        aria-orientation="vertical" aria-label="Resize schedule panel" title="Drag to resize schedule"></div>
+
+      <!-- TOP RIGHT: slides and preview -->
+      <div id="displayArea">
+        <div id="slidePanel">
+          <div id="slidePanelToolbar">
+            <button class="view-toggle-btn" id="btnViewToggle" type="button"
+              aria-label="Switch to sections view" title="Switch to sections view" aria-pressed="false">
+              <span class="view-icon" aria-hidden="true">&#9776;</span>
+            </button>
+          </div>
+          <div id="slideGrid"></div>
+          <div id="sectionsList"></div>
+        </div>
+        <div id="previewPanel">
+          <div id="previewHeader">Live Output</div>
+          <div id="previewResource">
+            <div id="previewResourceLabel"></div>
+            <div id="previewResourceText"></div>
+          </div>
+          <div class="panel-splitter vertical" id="previewSplitter" role="separator"
+            aria-orientation="vertical" aria-label="Resize preview panel" title="Drag to resize preview"></div>
+          <div id="previewBox">
+            <div id="previewInner">
+              <div id="previewText"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-splitter horizontal" id="contentHubSplitter" role="separator"
+      aria-orientation="horizontal" aria-label="Resize content hub" title="Drag to resize content hub"></div>
+
+    <!-- BOTTOM: content library -->
+    <div id="contentHub">
+      <div id="tabs">
+        <button class="tab active" data-tab="songs">Songs</button>
+        <button class="tab" data-tab="scripture">Scriptures</button>
+        <button class="tab" data-tab="media">Media</button>
+        <button class="tab" data-tab="presentations">Presentations</button>
+        <button class="tab" data-tab="themes">Themes</button>
+      </div>
+
+      <div id="contentHubMain">
+        <div class="tab-panel active" id="panel-songs">
+          <div class="song-filters">
+            <input type="text" class="search" id="songSearch" placeholder="Search songs…" />
+            <div class="filter-row">
+              <label class="filter-label" for="songFilterField">Filter by:</label>
+              <select id="songFilterField" title="Filter song search">
+                <option value="title" selected>Title</option>
+                <option value="lyrics">Lyrics</option>
+                <option value="author">Author</option>
+              </select>
+            </div>
+          </div>
+          <div class="song-list-panel">
+            <div class="song-list-header" aria-hidden="true">
+              <div>Title</div>
+              <div>Author</div>
+              <div>Sections / slides</div>
+            </div>
+            <div class="list song-library" id="songList"></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="panel-scripture">
+          <div class="library-filters">
+            <input type="text" class="search" id="scriptureSearch" placeholder="Search scripture…" />
+            <select id="scriptureFilterField" title="Filter scripture search">
+              <option value="all" selected>All fields</option>
+              <option value="title">Title</option>
+              <option value="lyrics">Lyrics</option>
+              <option value="author">Author</option>
+            </select>
+            <div class="row filter-option">
+              <label>Verses per slide</label>
+              <input type="number" id="versesPerSlide" min="1" max="6" value="1" />
+            </div>
+          </div>
+          <div class="list" id="scriptureList"></div>
+        </div>
+
+        <div class="tab-panel" id="panel-media">
+          <div class="library-filters">
+            <input type="text" class="search" id="mediaSearch" placeholder="Search media…" />
+            <select id="mediaFilterField" title="Filter media search">
+              <option value="all" selected>All fields</option>
+              <option value="title">Title</option>
+              <option value="lyrics">Lyrics</option>
+              <option value="author">Author</option>
+            </select>
+          </div>
+          <div class="list" id="mediaList"></div>
+        </div>
+
+        <div class="tab-panel" id="panel-presentations">
+          <div class="library-filters">
+            <input type="text" class="search" id="presentationSearch" placeholder="Search presentations…" />
+            <select id="presentationFilterField" title="Filter presentation search">
+              <option value="all" selected>All fields</option>
+              <option value="title">Title</option>
+              <option value="lyrics">Lyrics</option>
+              <option value="author">Author</option>
+            </select>
+            <div class="row filter-option">
+              <label>Verses per slide</label>
+              <input type="number" id="presentationVersesPerSlide" min="1" max="6" value="1" />
+            </div>
+          </div>
+          <div class="list" id="presentationList"></div>
+        </div>
+
+        <div class="tab-panel" id="panel-themes">
+          <div class="library-filters">
+            <input type="text" class="search" id="themeSearch" placeholder="Search themes…" />
+            <select id="themeFilterField" title="Filter theme search">
+              <option value="all" selected>All fields</option>
+              <option value="title">Title</option>
+              <option value="lyrics">Lyrics</option>
+              <option value="author">Author</option>
+            </select>
+          </div>
+          <div class="list" id="themeList"></div>
+        </div>
+
+        <div id="contentActions">
+          <button id="btnContentAdd" class="content-action-btn" type="button"
+            aria-label="New song" title="New song">+</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="songContextMenu" class="context-menu" hidden>
+    <button id="btnContextAddSong" type="button">Add to schedule</button>
+    <button id="btnContextEditSong" type="button">Edit song</button>
+  </div>
+
+  <!-- Song editor view -->
+  <div id="songEditorView" class="song-editor-view">
+    <div class="modal song-editor-page">
+      <div class="song-editor-header">
+        <div class="song-editor-titlebar">
+          <h2 id="songEditorTitle">New Song</h2>
+          <div class="song-editor-tools">
+            <select id="songThemeSelect" class="song-editor-tool theme-tool" aria-label="Song theme" title="Song theme"></select>
+            <button class="song-editor-tool" type="button" aria-label="Song editor tool 2"></button>
+            <button class="song-editor-tool" type="button" aria-label="Song editor tool 3"></button>
+            <button class="song-editor-tool" type="button" aria-label="Song editor tool 4"></button>
+            <button class="song-editor-tool" type="button" aria-label="Song editor tool 5"></button>
+          </div>
+        </div>
+        <div class="song-editor-fields">
+          <div>
+            <label>Title</label>
+            <input type="text" id="songTitleInput" />
+          </div>
+          <div>
+            <label>Author / source</label>
+            <input type="text" id="songAuthorInput" placeholder="e.g. Public domain, 1800s" />
+          </div>
+        </div>
+      </div>
+      <div class="song-editor-body">
+        <div class="song-editor-sections">
+          <div class="section-editor-heading">
+            <label>Lyrics sections</label>
+          </div>
+          <div id="songSectionsEditor"></div>
+          <button id="btnAddSongSection" class="song-section-add" type="button" aria-label="Add section" title="Add section">+</button>
+        </div>
+      </div>
+      <div class="modal-actions song-editor-actions">
+        <button id="btnSongSave" class="tb-btn accent">Save</button>
+        <button id="btnSongCancel" class="tb-btn subtle">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <div id="optionsView" class="options-view">
+    <main class="options-panel">
+      <div class="options-heading">
+        <button id="btnOptionsBack" class="options-back" type="button" aria-label="Back to control" title="Back to control">&#8592;</button>
+        <h1>Options</h1>
+      </div>
+      <section class="option-row">
+        <div>
+          <h2>Appearance</h2>
+          <p id="controlThemeLabel">Dark mode</p>
+        </div>
+        <button id="controlThemeToggle" class="theme-toggle" type="button"
+          aria-label="Switch to light mode" title="Switch to light mode" aria-pressed="false">
+          <span id="controlThemeIcon" aria-hidden="true">&#9728;</span>
+        </button>
+      </section>
+      <section class="option-row">
+        <div>
+          <h2>Logo</h2>
+          <div class="logo-name-row">
+            <p id="controlLogoLabel">No logo selected</p>
+            <button id="controlLogoClear" class="logo-clear" type="button"
+              aria-label="Remove logo" title="Remove logo">&times;</button>
+          </div>
+        </div>
+        <div class="option-actions">
+          <button id="controlLogoChoose" class="option-button" type="button">Choose</button>
+        </div>
+      </section>
+      <section class="option-row">
+        <div>
+          <h2>Section labels</h2>
+          <p>Labels are color-coded and case-sensitive.</p>
+        </div>
+        <div class="label-color-manager">
+          <div class="label-color-add">
+            <input id="sectionLabelName" type="text" pattern="[A-Za-z][A-Za-z0-9]*" maxlength="32" placeholder="Label" aria-label="Custom section label" />
+            <input id="sectionLabelColor" class="color-option" type="color" value="#9aa0ac" aria-label="Section label color" title="Section label color" />
+            <button id="sectionLabelAdd" class="option-button" type="button">Add</button>
+          </div>
+          <div id="sectionLabelList" class="label-color-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Theme editor modal -->
+  <div class="modal-backdrop" id="themeEditorBackdrop">
+    <div class="modal">
+      <h2 id="themeEditorTitle">New Theme</h2>
+      <label>Name</label>
+      <input type="text" id="themeNameInput" />
+
+      <label>Background type</label>
+      <select id="themeBgType">
+        <option value="color">Solid color</option>
+        <option value="image">Image</option>
+        <option value="video">Video</option>
+      </select>
+      <div id="themeBgColorRow">
+        <label>Background color</label>
+        <input type="color" id="themeBgColor" value="#000000" />
+      </div>
+      <div id="themeBgFileRow" style="display:none;">
+        <label>Background file</label>
+        <button id="btnThemeBgPick" class="tb-btn subtle">Choose from Media…</button>
+        <div id="themeBgFileName" style="font-size:12px;color:#9aa0ac;"></div>
+      </div>
+
+      <label>Font family</label>
+      <input type="text" id="themeFontFamily" value="Georgia, serif" />
+      <div class="row">
+        <div>
+          <label>Size</label>
+          <input type="number" id="themeFontSize" value="64" min="12" max="200" />
+        </div>
+        <div>
+          <label>Color</label>
+          <input type="color" id="themeFontColor" value="#ffffff" />
+        </div>
+        <div>
+          <label>Weight</label>
+          <select id="themeFontWeight">
+            <option value="400">Normal</option>
+            <option value="700" selected>Bold</option>
+          </select>
+        </div>
+      </div>
+      <label>Vertical alignment</label>
+      <select id="themeAlign">
+        <option value="top">Top</option>
+        <option value="middle" selected>Middle</option>
+        <option value="bottom">Bottom</option>
+      </select>
+      <label><input type="checkbox" id="themeShadow" checked /> Text shadow (readability over media)</label>
+
+      <div class="modal-actions">
+        <button id="btnThemeCancel" class="tb-btn subtle">Cancel</button>
+        <button id="btnThemeDelete" class="tb-btn danger" style="display:none;">Delete</button>
+        <button id="btnThemeSave" class="tb-btn accent">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Media picker modal (choose an already-added media item, used by theme editor) -->
+  <div class="modal-backdrop" id="mediaPickerBackdrop">
+    <div class="modal">
+      <h2>Choose media</h2>
+      <div class="list" id="mediaPickerList" style="max-height:400px;"></div>
+      <div class="modal-actions">
+        <button id="btnMediaPickerCancel" class="tb-btn subtle">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../shared/render.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>
