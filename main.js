@@ -459,6 +459,19 @@ ipcMain.handle('dialog:pick-logo', async () => {
   return result.canceled ? null : result.filePaths[0];
 });
 
+ipcMain.handle('dialog:confirm-song-editor-close', async () => {
+  const result = await dialog.showMessageBox(controlWindow, {
+    type: 'warning',
+    title: 'Save changes?',
+    message: 'Save changes before closing?',
+    detail: 'Choose Yes to save and close, No to discard changes, or Cancel to keep editing.',
+    buttons: ['Yes', 'No', 'Cancel'],
+    defaultId: 0,
+    cancelId: 2,
+  });
+  return result.response;
+});
+
 ipcMain.handle('dialog:import-json', async (evt, title) => {
   const result = await dialog.showOpenDialog(controlWindow, {
     title: title || 'Import',

@@ -166,10 +166,7 @@
 
   </div>
 
-  <div id="songContextMenu" class="context-menu" hidden>
-    <button id="btnContextAddSong" type="button">Add to schedule</button>
-    <button id="btnContextEditSong" type="button">Edit song</button>
-  </div>
+  <div id="songContextMenu" class="context-menu" hidden></div>
 
   <!-- Song editor view -->
   <div id="songEditorView" class="song-editor-view">
@@ -178,7 +175,10 @@
         <div class="song-editor-titlebar">
           <h2 id="songEditorTitle">New Song</h2>
           <div class="song-editor-tools">
-            <select id="songThemeSelect" class="song-editor-tool theme-tool" aria-label="Song theme" title="Song theme"></select>
+            <div class="song-editor-theme-selector" aria-label="Song theme selector">
+              <span class="song-editor-theme-label">Theme</span>
+              <select id="songThemeSelect" class="song-editor-theme-select" aria-label="Song theme" title="Song theme"></select>
+            </div>
             <button class="song-editor-tool" type="button" aria-label="Song editor tool 2"></button>
             <button class="song-editor-tool" type="button" aria-label="Song editor tool 3"></button>
             <button class="song-editor-tool" type="button" aria-label="Song editor tool 4"></button>
@@ -188,10 +188,12 @@
         <div class="song-editor-fields">
           <div>
             <label>Title</label>
-            <input type="text" id="songTitleInput" />
+            <div class="song-title-field">
+              <input type="text" id="songTitleInput" aria-invalid="false" />
+            </div>
           </div>
           <div>
-            <label>Author / source</label>
+            <label>Author/Copyright</label>
             <input type="text" id="songAuthorInput" placeholder="e.g. Public domain, 1800s" />
           </div>
         </div>
@@ -203,6 +205,14 @@
           </div>
           <div id="songSectionsEditor"></div>
           <button id="btnAddSongSection" class="song-section-add" type="button" aria-label="Add section" title="Add section">+</button>
+        </div>
+        <div class="song-editor-preview">
+          <div class="section-editor-heading">
+            <label>Preview</label>
+          </div>
+          <div id="songEditorPreviewStage" class="song-editor-preview-stage" aria-live="polite">
+            <div id="songEditorPreviewText" class="song-editor-preview-text"></div>
+          </div>
         </div>
       </div>
       <div class="modal-actions song-editor-actions">

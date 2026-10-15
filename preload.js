@@ -32,6 +32,7 @@ contextBridge.exposeInMainWorld('api', {
   // dialogs
   pickMedia: () => ipcRenderer.invoke('dialog:open-media'),
   pickLogo: () => ipcRenderer.invoke('dialog:pick-logo'),
+  confirmSongEditorClose: () => ipcRenderer.invoke('dialog:confirm-song-editor-close'),
   importJSON: (title) => ipcRenderer.invoke('dialog:import-json', title),
   exportJSON: (opts) => ipcRenderer.invoke('dialog:export-json', opts),
 

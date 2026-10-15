@@ -4,6 +4,7 @@
 
 (function () {
   const REFERENCE_WIDTH = 1920; // font sizes in theme JSON are authored for a 1920px-wide screen
+  const REFERENCE_HEIGHT = 1080;
 
   function removeVideoEl(containerEl) {
     const existing = containerEl.querySelector('video.bg-video');
@@ -75,7 +76,9 @@
 
     // mode: 'slide'
     const font = payload.font || {};
-    const scale = Math.max(0.05, (containerEl.clientWidth || REFERENCE_WIDTH) / REFERENCE_WIDTH);
+    const widthScale = (containerEl.clientWidth || REFERENCE_WIDTH) / REFERENCE_WIDTH;
+    const heightScale = (containerEl.clientHeight || REFERENCE_HEIGHT) / REFERENCE_HEIGHT;
+    const scale = Math.max(0.05, Math.min(widthScale, heightScale));
 
     textEl.style.display = 'block';
     textEl.textContent = payload.text || '';
