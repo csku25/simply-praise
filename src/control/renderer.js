@@ -2099,6 +2099,7 @@ function renderSectionLabelColors() {
 
 function openOptionsView() {
   document.body.classList.remove('song-editor-active');
+  window.api.setSongEditorActive(true);
   state.editingSongId = null;
   document.body.classList.add('options-active');
   updateControlOptionsTheme(state.settings.themeMode === 'light');
@@ -2108,6 +2109,7 @@ function openOptionsView() {
 
 function closeOptionsView() {
   document.body.classList.remove('options-active');
+  window.api.setSongEditorActive(false);
 }
 
 document.getElementById('songTitleInput').addEventListener('input', () => {

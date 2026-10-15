@@ -329,6 +329,7 @@ ipcMain.handle('data:get', (evt, name) => readJSON(name));
 ipcMain.handle('data:save', (evt, name, data) => writeJSON(name, data));
 ipcMain.handle('songs:set-editor-active', (evt, active) => {
   if (optionsMenuItem) optionsMenuItem.enabled = !active;
+  if (controlWindow && !controlWindow.isDestroyed()) controlWindow.setMenuBarVisibility(!active);
   return true;
 });
 ipcMain.handle('view:set-mode', (evt, mode) => {
